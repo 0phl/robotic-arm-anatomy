@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1f2523">
+  <title>Robotic arm anatomy · Kinetic Atlas</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23eb783e'/%3E%3Cpath d='M6 11l10-5 10 5-10 5zM6 16l10 5 10-5M6 21l10 5 10-5' fill='none' stroke='%23222725' stroke-width='2.4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/lesson.css">
+</head>
+<body>
+  <header class="masthead">
+    <div class="mast-inner">
+      <div class="wordmark"><span class="atlas-mark" data-icon="atlas"></span>Kinetic Atlas</div>
+      <nav class="modes" aria-label="Learning modes">
+        <button data-mode="explore" aria-pressed="true"><i data-icon="cube"></i>Explorer</button>
+        <button data-mode="motion" aria-pressed="false"><i data-icon="sliders"></i>Motion lab</button>
+        <button data-mode="quiz" aria-pressed="false"><i data-icon="quiz"></i>Knowledge check</button>
+      </nav>
+      <button id="help" class="guide-button"><i data-icon="help"></i><span>Quick guide</span></button>
+    </div>
+  </header>
+  <main class="page">
+    <div class="intro">
+      <div>
+        <div class="eyebrow breadcrumb"><span></span>Field guide <b>/</b> Robotics</div>
+        <h1>Robotic arm anatomy</h1>
+        <p id="mode-intro">Explore the assembly one part at a time. Select a component to see how it works.</p>
+      </div>
+      <div class="progress-block">
+        <div><span>Parts explored</span><strong id="progress-number">0 / 10</strong></div>
+        <div id="progress-bars" role="progressbar" aria-label="Parts explored" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"></div>
+      </div>
+    </div>
+
+    <div class="workspace">
+      <section class="viewer" id="viewer" aria-label="3D model workspace">
+        <div class="viewer-bar">
+          <div class="viewer-title"><i data-icon="cube"></i>Model workspace</div>
+          <div class="viewer-actions">
+            <button id="labels" class="text-control" aria-pressed="true"><i data-icon="pin"></i>Labels</button>
+            <span class="divider"></span>
+            <button id="expand" class="icon-button" aria-label="Expand viewer" title="Expand viewer"><i data-icon="expand"></i></button>
+          </div>
+        </div>
+        <div id="stage">
+          <canvas id="model" tabindex="0" aria-label="Interactive robotic arm. Drag to orbit, or use the arrow keys. Plus and minus zoom. Choose a numbered marker or use the parts index below."></canvas>
+          <img id="still" src="assets/parts/assembly.webp" alt="Assembled robotic arm" hidden>
+          <div id="markers"></div>
+          <div class="view-select"><i data-icon="view"></i><select id="orientation" aria-label="Camera view"><option value="perspective">Perspective</option><option value="front">Front view</option><option value="side">Side view</option><option value="top">Top view</option></select><i data-icon="chevronDown"></i></div>
+          <div class="viewport-tools">
+            <button id="zoom-out" aria-label="Zoom out" title="Zoom out"><i data-icon="minus"></i></button>
+            <button id="zoom-in" aria-label="Zoom in" title="Zoom in"><i data-icon="plus"></i></button>
+            <span class="divider"></span>
+            <button id="reset-camera" aria-label="Reset camera" title="Reset camera"><i data-icon="reset"></i></button>
+          </div>
+          <div class="axis" aria-hidden="true"><svg viewBox="0 0 48 44"><path d="M22 28V8" stroke="#688477"/><path d="m22 28 15 7" stroke="#c17252"/><path d="M22 28 8 34" stroke="#657b8d"/><g font-family="monospace" font-size="8" fill="currentColor"><text x="20" y="7">Y</text><text x="39" y="38">X</text><text x="1" y="38">Z</text></g><circle cx="22" cy="28" r="2" fill="currentColor"/></svg></div>
+        </div>
+        <div class="viewer-foot"><span><i data-icon="orbit"></i><span id="hint">Drag to orbit</span></span><span class="hint-dot">·</span><span id="zoom-hint">Scroll to zoom</span><span class="foot-right"><i data-icon="pointer"></i><span id="select-hint">Click a part to inspect</span></span></div>
+      </section>
+
+      <aside class="inspector" aria-label="Lesson controls">
+        <div class="panel-bar"><span><i id="panel-icon" data-icon="scan"></i><strong id="panel-label">Part inspector</strong></span><span id="panel-count" class="mono"></span></div>
+        <div id="panel-body"></div>
+      </aside>
+    </div>
+
+    <section class="index-section" aria-labelledby="index-title">
+      <div class="index-head"><div><h2 id="index-title">Component index</h2><span id="index-count" class="mono">10 parts</span></div><div class="index-arrows"><button id="index-prev" aria-label="Scroll components left"><i data-icon="left"></i></button><button id="index-next" aria-label="Scroll components right"><i data-icon="right"></i></button></div></div>
+      <div id="part-index" aria-label="Choose a component"></div>
+    </section>
+  </main>
+  <dialog id="guide"><div class="dialog-head"><i data-icon="help"></i><button class="icon-button" id="close-guide" aria-label="Close guide"><i data-icon="close"></i></button></div>
+    <h2>Quick guide</h2>
+    <dl><dt>Explore the model</dt><dd>Drag to orbit. Scroll or pinch to zoom. Right-drag or use two fingers to pan. A focused canvas also accepts the arrow keys, +, −, and Home.</dd>
+      <dt>Identify a component</dt><dd>Select its surface, its numbered marker, or its card in the component index. Choose Listen to hear the explanation, or isolate it for a closer view.</dd>
+      <dt>Experiment and check</dt><dd>Use the motion lab to move individual joints. In the knowledge check, identify five components on the model or in the index.</dd></dl>
+    <a href="robotic-arm.mp4">Watch the original assembly animation <i data-icon="arrowUpRight"></i></a>
+  </dialog>
+  <audio id="voice" preload="none"></audio>
+  <div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
+  <script src="assets/assembly.js"></script>
+</body>
+</html>

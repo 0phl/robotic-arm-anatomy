@@ -1,0 +1,81 @@
+{
+  "parts": [
+    {
+      "id": "base", "name": "Mounting base", "category": "Structure", "group": "Ground plate",
+      "anchor": [-1.05, -1.06, 0.21], "offset": [-63, 20],
+      "description": "The mounting plate anchors the arm to its work surface. Loads from every moving joint pass through this plate into the support below.",
+      "detail": "The outer holes take mounting fasteners. The circular seat in the center locates the base bearing.",
+      "prompt": "Orbit above the plate to see the mounting holes around the central bearing."
+    },
+    {
+      "id": "base-drive", "name": "Base motor", "category": "Actuation", "group": "01 / azimuth drive",
+      "anchor": [-0.43, -0.44, -0.43], "offset": [-59, 0],
+      "description": "The base motor supplies rotation around the vertical axis. Turning the base changes which direction the entire arm faces.",
+      "detail": "The square black housing stays seated above the plate. Torque leaves the motor through the central shaft.",
+      "prompt": "Change Base rotation in the motion lab and watch the gripper sweep sideways."
+    },
+    {
+      "id": "lower-link", "name": "Lower link", "category": "Linkage", "group": "02 / lower arm",
+      "anchor": [2.32, 0.22, 0.12], "offset": [53, 19],
+      "description": "This short structural member extends from the shoulder assembly. Its bosses provide substantial material around the pivot holes.",
+      "detail": "The open pockets remove material between the bosses while leaving continuous edges along the link.",
+      "prompt": "Isolate the link and rotate it edge-on to see the thickness of the machined plate."
+    },
+    {
+      "id": "shoulder", "name": "Shoulder motor", "category": "Actuation", "group": "03 / shoulder stepper",
+      "anchor": [0, 0.28, -0.86], "offset": [-56, -6],
+      "description": "The shoulder motor sits at the first lifting joint. It supplies torque to raise the links and the tool mounted beyond them.",
+      "detail": "The shoulder has to support more torque when the tool reaches farther horizontally from its pivot.",
+      "prompt": "View the arm from behind to see the motor housing and its connection to the shoulder."
+    },
+    {
+      "id": "lift", "name": "Lift arm", "category": "Linkage", "group": "04 / lift arm",
+      "anchor": [2.21, 0.10, 0.12], "offset": [63, -27],
+      "description": "The diagonal lift arm carries the elbow away from the shoulder. Its length sets the distance between those two joint axes.",
+      "detail": "The large circular bosses surround the pivots. The webs between the openings carry loads along the arm.",
+      "prompt": "Raise Shoulder lift in the motion lab and follow the circular path of the elbow."
+    },
+    {
+      "id": "upper-drive", "name": "Upper drive", "category": "Actuation", "group": "05 / upper drive",
+      "anchor": [0.75, -0.17, 0.13], "offset": [-48, -43],
+      "description": "This motor travels with the upper linkage. It brings a drive close to the wrist carriage, adding mass that the shoulder must also carry.",
+      "detail": "Look for the black motor body between two metal end caps and the short coupling beside it.",
+      "prompt": "Orbit to the back of the arm to distinguish the upper drive from the wrist actuator."
+    },
+    {
+      "id": "return", "name": "Upper return link", "category": "Linkage", "group": "06 / upper return link",
+      "anchor": [1.25, 0.10, 0.12], "offset": [24, -48],
+      "description": "The upper return link runs from the elbow back toward the wrist carriage. Pivoting it changes the wrist position relative to the elbow.",
+      "detail": "Its repeated openings reduce moving mass. The material around each end provides a seat for the joint hardware.",
+      "prompt": "Move Elbow bend in the motion lab and watch the wrist follow the far end of this link."
+    },
+    {
+      "id": "wrist-drive", "name": "Wrist actuator", "category": "Actuation", "group": "07 / wrist actuator",
+      "anchor": [0.72, -0.18, 0.20], "offset": [22, 46],
+      "description": "The compact wrist actuator sits directly behind the gripper. It changes tool orientation at the end of the arm.",
+      "detail": "The drive and gripper are separate assemblies. Rotating a tool and closing its fingers are distinct movements.",
+      "prompt": "Compare Wrist swivel and Jaw opening in the motion lab. Notice which movement changes the finger spacing."
+    },
+    {
+      "id": "wrist-link", "name": "Wrist link", "category": "Linkage", "group": "08 / wrist link",
+      "anchor": [1.27, 0.09, 0.16], "offset": [-49, -24],
+      "description": "The wrist link carries the tool assembly forward from the wrist bearing. Its two end bosses connect the bearing and the actuator.",
+      "detail": "One end carries a ring of fasteners. The larger boss at the other end sits beside the tool drive.",
+      "prompt": "Select Isolate part and compare the two ends of the link."
+    },
+    {
+      "id": "gripper", "name": "Parallel gripper", "category": "End effector", "group": "09 / parallel gripper",
+      "anchor": [0.72, 0.22, 0.17], "offset": [46, 32],
+      "description": "The gripper is the tool that contacts an object. Paired finger linkages bring the opposing pads together to grasp it.",
+      "detail": "The dark pads are the contact surfaces. The small pivot pins guide the finger links as the opening changes.",
+      "prompt": "Adjust Jaw opening in the motion lab and watch the pads approach each other."
+    }
+  ],
+  "questions": [
+    {"ask":"Which part transfers the arm’s loads into the work surface?","answer":"base","why":"The mounting base provides the fixed connection between the moving mechanism and the bench."},
+    {"ask":"Which motor turns the entire arm about its vertical axis?","answer":"base-drive","why":"The base motor changes the arm’s heading. The shoulder motor acts at the lifting joint."},
+    {"ask":"Find the diagonal member that carries the elbow away from the shoulder.","answer":"lift","why":"The lift arm spans the shoulder and elbow pivots. Its length sets their separation."},
+    {"ask":"Which component turns the tool directly behind the gripper?","answer":"wrist-drive","why":"The wrist actuator sets the tool’s orientation. The finger mechanism controls the jaw opening."},
+    {"ask":"Which part makes contact with the object being picked up?","answer":"gripper","why":"The parallel gripper holds the object between its two contact pads."}
+  ]
+}

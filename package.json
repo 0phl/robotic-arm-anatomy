@@ -1,0 +1,18 @@
+{
+  "name": "robotic-arm-motion-study",
+  "version": "1.0.0",
+  "description": "An editable studio animation of a robotic arm assembly.",
+  "scripts": {
+    "build": "node build.mjs",
+    "start": "node server.mjs"
+  },
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12",
+    "puppeteer-core": "24.31.0"
+  }
+}
